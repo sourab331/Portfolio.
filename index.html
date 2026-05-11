@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sourabh Kundal | Advanced Data Analyst Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6; 
+            --accent-color: #10b981; 
+            --text-main: #f9fafb;
+            --text-muted: #d1d5db;
+            --glass-bg: rgba(17, 24, 39, 0.9);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --body-bg: #0f172a;
+        }
+
+        /* Smooth scrolling enable */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--body-bg);
+            background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* --- NEW FLOATING PILL NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 25px; /* Floating away from the top edge */
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 0.5rem 1rem;
+            border-radius: 50px; /* Pill shape */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.15);
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem; /* Closer gap for buttons */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px; /* Hover turns into a pill shape */
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(59, 130, 246, 0.2);
+            box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 12rem 0 8rem 0;
+            background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15), transparent 40%);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .location {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-text {
+            max-width: 700px;
+            margin: 0 0 3rem 0;
+            font-size: 1.25rem;
+            color: #9ca3af;
+            border-left: 3px solid rgba(59, 130, 246, 0.3);
+            padding-left: 1.5rem;
+        }
+
+        /* --- UNIQUE HERO BUTTON --- */
+        a.btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent; 
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color); 
+            padding: 0.9rem 2.5rem;
+            text-decoration: none;
+            border-radius: 4px; 
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        a.btn:hover {
+            color: white;
+            background: var(--primary-color);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.7); 
+            transform: translateY(-2px);
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- SECTION STYLING --- */
+        section {
+            background: rgba(22, 30, 47, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            margin-bottom: 3rem;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            scroll-margin-top: 100px; /* Offset for floating nav */
+            transition: border-color 0.3s ease;
+        }
+
+        section:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        /* Cards (Case Studies & Education) */
+        .card {
+            background: rgba(17, 24, 39, 0.4);
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .card:hover {
+            background: rgba(17, 24, 39, 0.8);
+        }
+
+        .card h4 {
+            margin: 0 0 1rem 0;
+            font-size: 1.4rem;
+            color: #f3f4f6;
+            font-weight: 600;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 2px; 
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(17, 24, 39, 0.4);
+            padding: 2rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .skill-category h4 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- NEW PROFESSIONAL BULLET POINTS --- */
+        ul {
+            padding-left: 0;
+            margin: 0;
+            color: var(--text-muted);
+            list-style: none; /* Removes default bullets */
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        li::before {
+            content: '▹'; /* Sleek geometric arrow */
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Contact Details */
+        .contact-links p {
+            margin: 1.5rem 0;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+        }
+
+        .contact-links strong {
+            color: white;
+            margin-right: 10px;
+        }
+
+        .contact-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Flex Utilities */
+        .flex-between {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="header-container">
+            <h1>Sourabh Kundal</h1>
+            <h2>Data Analyst</h2>
+            <p class="location">📍 Bengaluru, India</p>
+            <p class="hero-text">Translating raw data into strategic business decisions through SQL, Advanced Analytics, and Interactive Dashboards. Focused on uncovering actionable insights to drive growth.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <h3 class="section-title">Professional Summary</h3>
+            <p>I don't just write SQL queries; I uncover the stories hidden within the numbers. With a B.Tech in Computer Science, I bring an engineering mindset to data analysis—focusing on structured relational databases, rigorous data cleaning, and logical problem-solving. My core expertise lies in extracting complex datasets and building intuitive visualizations that help stakeholders answer their most critical business questions.</p>
+        </section>
+
+        <section id="education">
+            <h3 class="section-title">Education & Certifications</h3>
+            
+            <div class="card">
+                <div class="flex-between">
+                    <div>
+                        <h4 style="margin-bottom: 0.3rem;">B.Tech in Computer Science</h4>
+                        <p style="color: var(--accent-color); font-weight: 500; margin-top: 0;">IES IPS Academy, Indore | CGPA: 7.2</p>
+                    </div>
+                    <div style="color: var(--text-muted); font-weight: bold;">2020 - 2024</div>
+                </div>
+                <p style="margin-top: 1rem; color: var(--text-muted);">
+                    <strong>Core Focus:</strong> Relational Databases, Object-Oriented Programming (Java), Database Management, and Logical Problem Solving.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="flex-between">
+                    <div>
+                        <h4 style="margin-bottom: 0.3rem;">Java Full Stack Training</h4>
+                        <p style="color: var(--accent-color); font-weight: 500; margin-top: 0;">TAP Academy</p>
+                    </div>
+                    <div style="color: var(--text-muted); font-weight: bold;">2025</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h3 class="section-title">Technical Arsenal</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Data Querying</h4>
+                    <ul>
+                        <li>SQL (MySQL, PostgreSQL)</li>
+                        <li>Relational Database Design</li>
+                        <li>Data Extraction</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Visualization & BI</h4>
+                    <ul>
+                        <li>Power BI & Tableau</li>
+                        <li>Dashboard Architecture</li>
+                        <li>Data Storytelling</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Analysis & Core</h4>
+                    <ul>
+                        <li>Advanced Excel (Power Query)</li>
+                        <li>Data Cleaning (EDA)</li>
+                        <li>Java & OOP Concepts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h3 class="section-title">Business Case Studies</h3>
+            
+            <div class="card">
+                <h4>Retail Revenue & Inventory Optimization</h4>
+                <div class="tags">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Advanced Excel</span>
+                    <span class="tag">EDA</span>
+                </div>
+                <p><strong>Business Problem:</strong> Regional retailer struggled with seasonal sales fluctuations and underperforming categories.</p>
+                <p><strong>Approach:</strong> Cleaned 50k+ rows via SQL (CTEs, Joins). Analyzed historical trends in Excel via PivotTables.</p>
+                <p><strong>Impact:</strong> Identified 15% revenue bottleneck, optimizing inventory reallocation.</p>
+            </div>
+
+            <div class="card">
+                <h4>Customer Churn & High-Value Retention Dashboard</h4>
+                <div class="tags">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Tableau</span>
+                </div>
+                <p><strong>Business Problem:</strong> Marketing team lacked visibility into customer segments with highest lifetime value (LTV).</p>
+                <p><strong>Approach:</strong> Engineered key KPIs. Developed an interactive dashboard with regional/demographic drill-downs.</p>
+                <p><strong>Impact:</strong> Isolated top 20% high-value customers, enabling targeted retention campaigns.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-links">
+            <h3 class="section-title">Let's Connect</h3>
+            <p>Currently based in Bengaluru and actively seeking Data Analyst roles where I can drive immediate business value.</p>
+            <p><strong>📞 Phone:</strong> <a href="tel:+919303275025">+91 9303275025</a></p>
+            <p><strong>📧 Email:</strong> <a href="mailto:sourabhkundal331@gmail.com">sourabhkundal331@gmail.com</a></p>
+            <p><strong>💼 LinkedIn:</strong> <a href="#" target="_blank">linkedin.com/in/sourabhkundal</a></p>
+            <p><strong>💻 GitHub:</strong> <a href="#" target="_blank">https://github.com/sourab331</a></p>
+        </section>
+
+    </div>
+
+</body>
+</html>
